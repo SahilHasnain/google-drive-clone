@@ -18,7 +18,7 @@ import {
 import React, { useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { verifySecret, sendEmailOTP } from "@/lib/actions/user.actions";
+import { sendEmailOTP } from "@/lib/actions/user.actions";
 import { useRouter } from "next/navigation";
 
 const OtpModal = ({
@@ -37,16 +37,25 @@ const OtpModal = ({
     e.preventDefault();
     setIsLoading(true);
 
-    console.log({ accountId, password });
-
     try {
-      const sessionId = await verifySecret({ accountId, password });
+      const res = await fetch("/api/verify-secret", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ accountId, password }),
+      });
 
-      console.log({ sessionId });
+      const data = await res.json();
 
-      if (sessionId) router.push("/");
+      if (!res.ok) throw new Error(data.error || "Unknown error");
+
+      console.log("Session ID:", data.sessionId);
+
+      // Redirect to home page after success
+      router.push("/");
     } catch (error) {
-      console.log("Failed to verify OTP", error);
+      console.error("Failed to verify OTP", error);
     }
 
     setIsLoading(false);

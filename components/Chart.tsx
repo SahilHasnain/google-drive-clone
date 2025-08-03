@@ -31,8 +31,7 @@ const chartConfig = {
 export const Chart = ({ used = 0 }: { used: number }) => {
   const chartData = [{ storage: "used", 10: used, fill: "white" }];
 
-  const availableStorage = convertFileSize((2*1024*1024*1024) - used);
-  
+  const availableStorage = convertFileSize(2 * 1024 * 1024 * 1024 - used);
 
   // Convert percentage (0-100) directly to degrees (0-360)
   const usedDataInDegree = Math.floor(calculatePercentage(used) * 3.6); // 1% = 3.6 degrees (360/100)
@@ -45,7 +44,7 @@ export const Chart = ({ used = 0 }: { used: number }) => {
           <RadialBarChart
             data={chartData}
             startAngle={90}
-            endAngle={ Number(usedDataInDegree) + 90}
+            endAngle={Number(usedDataInDegree) + 90}
             innerRadius={80}
             outerRadius={110}
           >
@@ -99,7 +98,7 @@ export const Chart = ({ used = 0 }: { used: number }) => {
       <CardHeader className="chart-details">
         <CardTitle className="chart-title">Available Storage</CardTitle>
         <CardDescription className="chart-description">
-        {availableStorage} / 2GB
+          {availableStorage} / 2GB
         </CardDescription>
       </CardHeader>
     </Card>
