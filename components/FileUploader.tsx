@@ -90,56 +90,58 @@ const FileUploader = ({
         <p>Upload</p>
       </Button>
       {files.length > 0 && (
-        <ul className="uploader-preview-list fixed inset-x-0 top-0 z-50 m-auto w-[90%] max-h-[80vh] max-w-md overflow-y-auto rounded-lg bg-gray-900 p-5 shadow-lg md:absolute md:w-auto">
-          <div className="mb-4 flex items-center justify-between">
-            <h4 className="h4 text-light-100">Uploading</h4>
-            <Image
-              src="/assets/icons/close.svg"
-              width={24}
-              height={24}
-              alt="Close"
-              className="cursor-pointer"
-              onClick={() => setFiles([])}
-            />
-          </div>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+          <ul className="uploader-preview-list max-h-[80vh] w-[90%] max-w-md overflow-y-auto rounded-lg bg-gray-900 p-5 shadow-lg">
+            <div className="mb-4 flex items-center justify-between">
+              <h4 className="h4 text-light-100">Uploading</h4>
+              <Image
+                src="/assets/icons/close.svg"
+                width={24}
+                height={24}
+                alt="Close"
+                className="cursor-pointer"
+                onClick={() => setFiles([])}
+              />
+            </div>
 
-          {files.map((file, index) => {
-            const { type, extension } = getFileType(file.name);
+            {files.map((file, index) => {
+              const { type, extension } = getFileType(file.name);
 
-            return (
-              <li
-                key={`${file.name}-${index}`}
-                className="uploader-preview-item"
-              >
-                <div className="flex items-center gap-3">
-                  <Thumbnail
-                    type={type}
-                    extension={extension}
-                    url={convertFileToUrl(file)}
-                  />
-
-                  <div className="preview-item-name">
-                    {file.name}
-                    <Image
-                      src="/assets/icons/file-loader.gif"
-                      width={80}
-                      height={26}
-                      alt="Loader"
+              return (
+                <li
+                  key={`${file.name}-${index}`}
+                  className="uploader-preview-item"
+                >
+                  <div className="flex items-center gap-3">
+                    <Thumbnail
+                      type={type}
+                      extension={extension}
+                      url={convertFileToUrl(file)}
                     />
-                  </div>
-                </div>
 
-                <Image
-                  src="/assets/icons/remove.svg"
-                  width={24}
-                  height={24}
-                  alt="Remove"
-                  onClick={(e) => handleRemoveFile(e, file.name)}
-                />
-              </li>
-            );
-          })}
-        </ul>
+                    <div className="preview-item-name">
+                      {file.name}
+                      <Image
+                        src="/assets/icons/file-loader.gif"
+                        width={80}
+                        height={26}
+                        alt="Loader"
+                      />
+                    </div>
+                  </div>
+
+                  <Image
+                    src="/assets/icons/remove.svg"
+                    width={24}
+                    height={24}
+                    alt="Remove"
+                    onClick={(e) => handleRemoveFile(e, file.name)}
+                  />
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       )}
     </div>
   );
