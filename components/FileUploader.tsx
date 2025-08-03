@@ -16,21 +16,28 @@ interface Props {
   ownerId: string;
   accountId: string;
   className?: string;
+  onUploadStart?: () => void;
 }
 
-const FileUploader = ({ ownerId, accountId, className }: Props) => {
+const FileUploader = ({
+  ownerId,
+  accountId,
+  className,
+  onUploadStart,
+}: Props) => {
   const path = usePathname();
   const { toast } = useToast();
   const [files, setFiles] = useState<File[]>([]);
 
   const onDrop = useCallback(
     async (acceptedFiles: File[]) => {
+      if (onUploadStart) onUploadStart();
       setFiles(acceptedFiles);
 
       const uploadPromises = acceptedFiles.map(async (file) => {
         if (file.size > MAX_FILE_SIZE) {
           setFiles((prevFiles) =>
-            prevFiles.filter((f) => f.name !== file.name),
+            prevFiles.filter((f) => f.name !== file.name)
           );
 
           return toast({
@@ -48,23 +55,23 @@ const FileUploader = ({ ownerId, accountId, className }: Props) => {
           (uploadedFile) => {
             if (uploadedFile) {
               setFiles((prevFiles) =>
-                prevFiles.filter((f) => f.name !== file.name),
+                prevFiles.filter((f) => f.name !== file.name)
               );
             }
-          },
+          }
         );
       });
 
       await Promise.all(uploadPromises);
     },
-    [ownerId, accountId, path],
+    [ownerId, accountId, path, toast, onUploadStart]
   );
 
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   const handleRemoveFile = (
     e: React.MouseEvent<HTMLImageElement, MouseEvent>,
-    fileName: string,
+    fileName: string
   ) => {
     e.stopPropagation();
     setFiles((prevFiles) => prevFiles.filter((file) => file.name !== fileName));
@@ -83,8 +90,18 @@ const FileUploader = ({ ownerId, accountId, className }: Props) => {
         <p>Upload</p>
       </Button>
       {files.length > 0 && (
-        <ul className="uploader-preview-list">
-          <h4 className="h4 text-light-100">Uploading</h4>
+        <ul className="uploader-preview-list fixed inset-x-0 top-0 z-50 m-auto w-[90%] max-h-[80vh] max-w-md overflow-y-auto rounded-lg bg-gray-900 p-5 shadow-lg md:absolute md:w-auto">
+          <div className="mb-4 flex items-center justify-between">
+            <h4 className="h4 text-light-100">Uploading</h4>
+            <Image
+              src="/assets/icons/close.svg"
+              width={24}
+              height={24}
+              alt="Close"
+              className="cursor-pointer"
+              onClick={() => setFiles([])}
+            />
+          </div>
 
           {files.map((file, index) => {
             const { type, extension } = getFileType(file.name);
