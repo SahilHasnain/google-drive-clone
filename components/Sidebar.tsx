@@ -42,7 +42,7 @@ const Sidebar = ({ fullName, avatar, email }: Props) => {
               <li
                 className={cn(
                   "sidebar-nav-item",
-                  pathname === url && "shad-active",
+                  pathname === url && "shad-active"
                 )}
               >
                 <Image
@@ -52,7 +52,7 @@ const Sidebar = ({ fullName, avatar, email }: Props) => {
                   height={24}
                   className={cn(
                     "nav-icon",
-                    pathname === url && "nav-icon-active",
+                    pathname === url && "nav-icon-active"
                   )}
                 />
                 <p className="hidden lg:block">{name}</p>
@@ -69,6 +69,12 @@ const Sidebar = ({ fullName, avatar, email }: Props) => {
         height={418}
         className="w-full"
       />
+
+      <div className="w-full my-4 text-center">
+        <p className="text-xs font-medium text-brand">
+          Developed by Ubaid Raza
+        </p>
+      </div>
 
       <div className="sidebar-user-info">
         <Image
