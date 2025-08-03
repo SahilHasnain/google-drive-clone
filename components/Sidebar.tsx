@@ -70,12 +70,6 @@ const Sidebar = ({ fullName, avatar, email }: Props) => {
         className="w-full"
       />
 
-      <div className="w-full my-4 text-center">
-        <p className="text-xs font-medium text-brand">
-          Developed by Ubaid Raza
-        </p>
-      </div>
-
       <div className="sidebar-user-info">
         <Image
           src={avatar}
