@@ -80,11 +80,6 @@ const FileUploader = ({
    // ✨ Add ref for hidden button
   const hiddenButtonRef = useRef<HTMLButtonElement>(null);
 
-  // ✨ Expose open function
-  const openFileDialog = () => {
-    hiddenButtonRef.current?.click();
-  };
-
   return (
     <div {...getRootProps()} className="cursor-pointer">
       <input {...getInputProps()} />
@@ -95,11 +90,10 @@ const FileUploader = ({
         className="hidden"
       />
       
-      {/* ✨ Main visible button */}
+      
       <Button 
         type="button" 
         className={cn("uploader-button", className)}
-        onClick={openFileDialog}
       >
         <Image
           src="/assets/icons/upload.svg"
