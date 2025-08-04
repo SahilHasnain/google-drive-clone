@@ -79,7 +79,7 @@ const MobileNavigation = ({
                   <li
                     className={cn(
                       "mobile-nav-item",
-                      pathname === url && "shad-active",
+                      pathname === url && "shad-active"
                     )}
                   >
                     <Image
@@ -89,7 +89,7 @@ const MobileNavigation = ({
                       height={24}
                       className={cn(
                         "nav-icon",
-                        pathname === url && "nav-icon-active",
+                        pathname === url && "nav-icon-active"
                       )}
                     />
                     <p>{name}</p>
@@ -102,12 +102,43 @@ const MobileNavigation = ({
           <Separator className="my-5 bg-light-200/20" />
 
           <div className="flex flex-col justify-between gap-5 pb-5">
-            <FileUploader 
+            {/* <FileUploader 
               ownerId={ownerId} 
               accountId={accountId} 
               className="w-full"
               onUploadStart={() => setOpen(false)}
-            />
+            /> */}
+            <Button
+              onClick={() => {
+                setOpen(false); // Menu band karo
+                setTimeout(() => {
+                  // ✨ Trigger upload after menu closes
+                  document.getElementById("global-upload-button")?.click();
+                }, 100);
+              }}
+              className="w-full"
+            >
+              <Image
+                src="/assets/icons/upload.svg"
+                alt="Upload"
+                width={24}
+                height={24}
+              />
+              <span className="ml-2">Upload</span>
+            </Button>
+            <Button
+              type="submit"
+              className="mobile-sign-out-button"
+              onClick={async () => await signOutUser()}
+            >
+              <Image
+                src="/assets/icons/logout.svg"
+                alt="logo"
+                width={24}
+                height={24}
+              />
+              <p>Logout</p>
+            </Button>
             <Button
               type="submit"
               className="mobile-sign-out-button"
