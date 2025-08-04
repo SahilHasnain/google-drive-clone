@@ -108,7 +108,7 @@ const MobileNavigation = ({
               className="w-full"
               onUploadStart={() => setOpen(false)}
             /> */}
-            {/* <Button
+            <Button
               onClick={() => {
                 setOpen(false); // Menu band karo
                 setTimeout(() => {
@@ -116,7 +116,7 @@ const MobileNavigation = ({
                   document.getElementById("global-upload-button")?.click();
                 }, 100);
               }}
-              className="w-full"
+              className="uploader-button"
             >
               <Image
                 src="/assets/icons/upload.svg"
@@ -125,7 +125,7 @@ const MobileNavigation = ({
                 height={24}
               />
               <span className="ml-2">Upload</span>
-            </Button> */}
+            </Button>
             <Button
               type="submit"
               className="mobile-sign-out-button"
