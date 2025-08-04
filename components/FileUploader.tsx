@@ -37,7 +37,7 @@ const FileUploader = ({
       const uploadPromises = acceptedFiles.map(async (file) => {
         if (file.size > MAX_FILE_SIZE) {
           setFiles((prevFiles) =>
-            prevFiles.filter((f) => f.name !== file.name)
+            prevFiles.filter((f) => f.name !== file.name),
           );
 
           return toast({
@@ -55,46 +55,42 @@ const FileUploader = ({
           (uploadedFile) => {
             if (uploadedFile) {
               setFiles((prevFiles) =>
-                prevFiles.filter((f) => f.name !== file.name)
+                prevFiles.filter((f) => f.name !== file.name),
               );
             }
-          }
+          },
         );
       });
 
       await Promise.all(uploadPromises);
     },
-    [ownerId, accountId, path, toast, onUploadStart]
+    [ownerId, accountId, path, toast, onUploadStart],
   );
 
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   const handleRemoveFile = (
     e: React.MouseEvent<HTMLImageElement, MouseEvent>,
-    fileName: string
+    fileName: string,
   ) => {
     e.stopPropagation();
     setFiles((prevFiles) => prevFiles.filter((file) => file.name !== fileName));
   };
 
-   // ✨ Add ref for hidden button
+  // ✨ Add ref for hidden button
   const hiddenButtonRef = useRef<HTMLButtonElement>(null);
 
   return (
     <div {...getRootProps()} className="cursor-pointer">
       <input {...getInputProps()} />
-       {/* ✨ Hidden button for external access */}
-      <button 
+      {/* ✨ Hidden button for external access */}
+      <button
         id="global-upload-button"
         ref={hiddenButtonRef}
         className="hidden"
       />
-      
-      
-      <Button 
-        type="button" 
-        className={cn("uploader-button", className)}
-      >
+
+      <Button type="button" className={cn("uploader-button", className)}>
         <Image
           src="/assets/icons/upload.svg"
           alt="Upload"
