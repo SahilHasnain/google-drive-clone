@@ -108,7 +108,7 @@ const MobileNavigation = ({
               className="w-full"
               onUploadStart={() => setOpen(false)}
             /> */}
-            <Button
+            {/* <Button
               onClick={() => {
                 setOpen(false); // Menu band karo
                 setTimeout(() => {
@@ -125,7 +125,7 @@ const MobileNavigation = ({
                 height={24}
               />
               <span className="ml-2">Upload</span>
-            </Button>
+            </Button> */}
             <Button
               type="submit"
               className="mobile-sign-out-button"

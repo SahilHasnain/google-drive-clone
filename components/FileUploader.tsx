@@ -84,11 +84,11 @@ const FileUploader = ({
     <div {...getRootProps()} className="cursor-pointer">
       <input {...getInputProps()} />
        {/* ✨ Hidden button for external access */}
-      <button 
+      {/* <button 
         id="global-upload-button"
         ref={hiddenButtonRef}
         className="hidden"
-      />
+      /> */}
       
       
       <Button 
