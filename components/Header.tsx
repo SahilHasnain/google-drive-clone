@@ -27,14 +27,8 @@ const Header = () => {
           />
           <span className="ml-2">Upload</span>
         </Button>
-        <form
-          action={async () => {
-            "use server";
-
-            await signOutUser();
-          }}
-        >
-          <Button type="submit" className="sign-out-button">
+       
+          <Button type="button" className="sign-out-button" onClick={async () => await signOutUser()}>
             <Image
               src="/assets/icons/logout.svg"
               alt="logo"
@@ -43,7 +37,7 @@ const Header = () => {
               className="w-6"
             />
           </Button>
-        </form>
+        
       </div>
     </header>
   );
