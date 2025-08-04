@@ -65,6 +65,7 @@ const Search = () => {
           value={query}
           placeholder="Search..."
           className="search-input"
+          data-tap-safe
           onChange={(e) => setQuery(e.target.value)}
         />
 
@@ -75,6 +76,7 @@ const Search = () => {
                 <li
                   className="flex items-center justify-between"
                   key={file.$id}
+                  data-tap-safe
                   onClick={() => handleClickItem(file)}
                 >
                   <div className="flex cursor-pointer items-center gap-4">

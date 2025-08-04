@@ -17,6 +17,7 @@ const Header = () => {
           onClick={() =>
             document.getElementById("global-upload-button")?.click()
           }
+          data-tap-safe
         >
           <Image
             src="/assets/icons/upload.svg"
@@ -31,6 +32,7 @@ const Header = () => {
           type="button"
           className="sign-out-button"
           onClick={async () => await signOutUser()}
+          data-tap-safe
         >
           <Image
             src="/assets/icons/logout.svg"

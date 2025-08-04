@@ -87,6 +87,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
                       <Input
                         placeholder="Enter your full name"
                         className="shad-input"
+                        data-tap-safe
                         {...field}
                       />
                     </FormControl>
@@ -110,6 +111,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
                     <Input
                       placeholder="Enter your email"
                       className="shad-input"
+                      data-tap-safe
                       {...field}
                     />
                   </FormControl>
@@ -124,6 +126,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
             type="submit"
             className="form-submit-button"
             disabled={isLoading}
+            data-tap-safe
           >
             {type === "sign-in" ? "Sign In" : "Sign Up"}
 
@@ -149,6 +152,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
             <Link
               href={type === "sign-in" ? "/sign-up" : "/sign-in"}
               className="ml-1 font-medium text-brand"
+              data-tap-safe
             >
               {" "}
               {type === "sign-in" ? "Sign Up" : "Sign In"}

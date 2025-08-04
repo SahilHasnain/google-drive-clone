@@ -20,7 +20,7 @@ const Sort = () => {
 
   return (
     <Select onValueChange={handleSort} defaultValue={sortTypes[0].value}>
-      <SelectTrigger className="sort-select">
+      <SelectTrigger className="sort-select" data-tap-safe>
         <SelectValue placeholder={sortTypes[0].value} />
       </SelectTrigger>
       <SelectContent className="sort-select-content">
@@ -29,6 +29,7 @@ const Sort = () => {
             key={sort.label}
             className="shad-select-item"
             value={sort.value}
+            data-tap-safe
           >
             {sort.label}
           </SelectItem>

@@ -78,6 +78,7 @@ const OtpModal = ({
               height={20}
               onClick={() => setIsOpen(false)}
               className="otp-close-button"
+              data-tap-safe
             />
           </AlertDialogTitle>
           <AlertDialogDescription className="subtitle-2 text-center text-light-100">
@@ -103,6 +104,7 @@ const OtpModal = ({
               onClick={handleSubmit}
               className="shad-submit-btn h-12"
               type="button"
+              data-tap-safe
             >
               Submit
               {isLoading && (
@@ -123,6 +125,7 @@ const OtpModal = ({
                 variant="link"
                 className="pl-1 text-brand"
                 onClick={handleResendOtp}
+                data-tap-safe
               >
                 Click to resend
               </Button>

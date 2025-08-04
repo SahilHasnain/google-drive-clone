@@ -56,6 +56,7 @@ export const ShareInput = ({ file, onInputChange, onRemove }: Props) => {
         <Input
           type="email"
           placeholder="Enter email address"
+          data-tap-safe
           onChange={(e) => onInputChange(e.target.value.trim().split(","))}
           className="share-input-field"
         />
@@ -77,6 +78,7 @@ export const ShareInput = ({ file, onInputChange, onRemove }: Props) => {
                 <Button
                   onClick={() => onRemove(email)}
                   className="share-remove-user"
+                  data-tap-safe
                 >
                   <Image
                     src="/assets/icons/remove.svg"

@@ -17,7 +17,7 @@ const Sidebar = ({ fullName, avatar, email }: Props) => {
 
   return (
     <aside className="sidebar">
-      <Link href="/">
+      <Link href="/" data-tap-safe>
         <Image
           src="/assets/icons/logo-full-brand.svg"
           alt="logo"
@@ -38,7 +38,7 @@ const Sidebar = ({ fullName, avatar, email }: Props) => {
       <nav className="sidebar-nav">
         <ul className="flex flex-1 flex-col gap-6">
           {navItems.map(({ url, name, icon }) => (
-            <Link key={name} href={url} className="lg:w-full">
+            <Link key={name} href={url} className="lg:w-full" data-tap-safe>
               <li
                 className={cn(
                   "sidebar-nav-item",

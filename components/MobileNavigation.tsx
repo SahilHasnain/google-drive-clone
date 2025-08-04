@@ -37,7 +37,7 @@ const MobileNavigation = ({ fullName, avatar, email }: Props) => {
       />
 
       <Sheet open={open} onOpenChange={setOpen}>
-        <SheetTrigger>
+        <SheetTrigger data-tap-safe>
           <Image
             src="/assets/icons/menu.svg"
             alt="Search"
@@ -66,7 +66,13 @@ const MobileNavigation = ({ fullName, avatar, email }: Props) => {
           <nav className="mobile-nav">
             <ul className="mobile-nav-list">
               {navItems.map(({ url, name, icon }) => (
-                <Link key={name} href={url} className="lg:w-full">
+                <Link
+                  key={name}
+                  href={url}
+                  className="lg:w-full"
+                  data-tap-safe
+                  onClick={() => setOpen(false)}
+                >
                   <li
                     className={cn(
                       "mobile-nav-item",
@@ -100,6 +106,8 @@ const MobileNavigation = ({ fullName, avatar, email }: Props) => {
               onUploadStart={() => setOpen(false)}
             /> */}
             <Button
+              type="button"
+              data-tap-safe
               onClick={() => {
                 setOpen(false); // Menu band karo
                 setTimeout(() => {
@@ -120,6 +128,7 @@ const MobileNavigation = ({ fullName, avatar, email }: Props) => {
             <Button
               type="button"
               className="mobile-sign-out-button"
+              data-tap-safe
               onClick={async () => await signOutUser()}
             >
               <Image

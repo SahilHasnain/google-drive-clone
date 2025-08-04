@@ -32,6 +32,7 @@ const Dashboard = async () => {
               href={summary.url}
               key={summary.title}
               className="dashboard-summary-card"
+              data-tap-safe
             >
               <div className="space-y-4">
                 <div className="flex justify-between gap-3">
@@ -69,6 +70,7 @@ const Dashboard = async () => {
                 href={file.url}
                 target="_blank"
                 className="flex items-center gap-3"
+                data-tap-safe
                 key={file.$id}
               >
                 <Thumbnail

@@ -95,6 +95,7 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
           </DialogTitle>
           {value === "rename" && (
             <Input
+              data-tap-safe
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -117,10 +118,18 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
         </DialogHeader>
         {["rename", "delete", "share"].includes(value) && (
           <DialogFooter className="flex flex-col gap-3 md:flex-row">
-            <Button onClick={closeAllModals} className="modal-cancel-button">
+            <Button
+              onClick={closeAllModals}
+              className="modal-cancel-button"
+              data-tap-safe
+            >
               Cancel
             </Button>
-            <Button onClick={handleAction} className="modal-submit-button">
+            <Button
+              onClick={handleAction}
+              className="modal-submit-button"
+              data-tap-safe
+            >
               <p className="capitalize">{value}</p>
               {isLoading && (
                 <Image
@@ -141,7 +150,7 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
   return (
     <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
       <DropdownMenu open={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
-        <DropdownMenuTrigger className="shad-no-focus">
+        <DropdownMenuTrigger className="shad-no-focus shrink-0">
           <Image
             src="/assets/icons/dots.svg"
             alt="dots"
@@ -158,6 +167,7 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
             <DropdownMenuItem
               key={actionItem.value}
               className="shad-dropdown-item"
+              data-tap-safe
               onClick={() => {
                 setAction(actionItem);
 
@@ -175,6 +185,7 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
                   href={constructDownloadUrl(file.bucketFileId)}
                   download={file.name}
                   className="flex items-center gap-2"
+                  data-tap-safe
                 >
                   <Image
                     src={actionItem.icon}
