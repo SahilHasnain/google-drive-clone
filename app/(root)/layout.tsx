@@ -10,10 +10,18 @@ import FileUploader from "@/components/FileUploader";
 export const dynamic = "force-dynamic";
 
 const Layout = async ({ children }: { children: React.ReactNode }) => {
-  const currentUser = await getCurrentUser();
-  const { $id: ownerId, accountId } = currentUser;
+  let currentUser;
+  let ownerId;
+  let accountId;
+  try {
+    currentUser = await getCurrentUser();
+    if (!currentUser) return redirect("/sign-in");
 
-  if (!currentUser) return redirect("/sign-in");
+    ({ $id: ownerId, accountId } = currentUser);
+  } catch (error) {
+    console.error("Error fetching current user:", error);
+    return redirect("/sign-in");
+  }
 
   return (
     <main className="flex h-screen">
