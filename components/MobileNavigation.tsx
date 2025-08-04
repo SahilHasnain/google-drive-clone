@@ -14,24 +14,15 @@ import { navItems } from "@/constants";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import FileUploader from "@/components/FileUploader";
 import { signOutUser } from "@/lib/actions/user.actions";
 
 interface Props {
-  $id: string;
-  accountId: string;
   fullName: string;
   avatar: string;
   email: string;
 }
 
-const MobileNavigation = ({
-  $id: ownerId,
-  accountId,
-  fullName,
-  avatar,
-  email,
-}: Props) => {
+const MobileNavigation = ({ fullName, avatar, email }: Props) => {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
@@ -127,20 +118,7 @@ const MobileNavigation = ({
               <span className="ml-2">Upload</span>
             </Button>
             <Button
-              type="submit"
-              className="mobile-sign-out-button"
-              onClick={async () => await signOutUser()}
-            >
-              <Image
-                src="/assets/icons/logout.svg"
-                alt="logo"
-                width={24}
-                height={24}
-              />
-              <p>Logout</p>
-            </Button>
-            <Button
-              type="submit"
+              type="button"
               className="mobile-sign-out-button"
               onClick={async () => await signOutUser()}
             >

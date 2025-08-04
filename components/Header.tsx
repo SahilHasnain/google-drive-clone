@@ -4,7 +4,6 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Search from "@/components/Search";
-import FileUploader from "@/components/FileUploader";
 import { signOutUser } from "@/lib/actions/user.actions";
 
 const Header = () => {
@@ -27,17 +26,20 @@ const Header = () => {
           />
           <span className="ml-2">Upload</span>
         </Button>
-       
-          <Button type="button" className="sign-out-button" onClick={async () => await signOutUser()}>
-            <Image
-              src="/assets/icons/logout.svg"
-              alt="logo"
-              width={24}
-              height={24}
-              className="w-6"
-            />
-          </Button>
-        
+
+        <Button
+          type="button"
+          className="sign-out-button"
+          onClick={async () => await signOutUser()}
+        >
+          <Image
+            src="/assets/icons/logout.svg"
+            alt="logo"
+            width={24}
+            height={24}
+            className="w-6"
+          />
+        </Button>
       </div>
     </header>
   );

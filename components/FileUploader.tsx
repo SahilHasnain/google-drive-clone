@@ -16,22 +16,15 @@ interface Props {
   ownerId: string;
   accountId: string;
   className?: string;
-  onUploadStart?: () => void;
 }
 
-const FileUploader = ({
-  ownerId,
-  accountId,
-  className,
-  onUploadStart,
-}: Props) => {
+const FileUploader = ({ ownerId, accountId, className }: Props) => {
   const path = usePathname();
   const { toast } = useToast();
   const [files, setFiles] = useState<File[]>([]);
 
   const onDrop = useCallback(
     async (acceptedFiles: File[]) => {
-      if (onUploadStart) onUploadStart();
       setFiles(acceptedFiles);
 
       const uploadPromises = acceptedFiles.map(async (file) => {
@@ -64,7 +57,7 @@ const FileUploader = ({
 
       await Promise.all(uploadPromises);
     },
-    [ownerId, accountId, path, toast, onUploadStart],
+    [ownerId, accountId, path, toast],
   );
 
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
@@ -99,7 +92,6 @@ const FileUploader = ({
         />
         <span className="ml-2">Upload</span>
       </Button>
-      {console.log(files)}
       {files.length > 0 && (
         <ul className="uploader-preview-list">
           <div className="mb-4 flex items-center justify-between">
@@ -130,7 +122,7 @@ const FileUploader = ({
                   />
 
                   <div className="preview-item-name">
-                    {file.name}
+                    <p className="line-clamp-1">{file.name}</p>
                     <Image
                       src="/assets/icons/file-loader.gif"
                       width={80}

@@ -7,8 +7,6 @@ import { redirect } from "next/navigation";
 import { Toaster } from "@/components/ui/toaster";
 import FileUploader from "@/components/FileUploader";
 
-export const dynamic = "force-dynamic";
-
 const Layout = async ({ children }: { children: React.ReactNode }) => {
   let currentUser;
   let ownerId;
