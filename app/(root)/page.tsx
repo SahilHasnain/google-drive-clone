@@ -32,7 +32,6 @@ const Dashboard = async () => {
               href={summary.url}
               key={summary.title}
               className="dashboard-summary-card"
-              data-tap-safe
             >
               <div className="space-y-4">
                 <div className="flex justify-between gap-3">
@@ -66,12 +65,11 @@ const Dashboard = async () => {
         {files.documents.length > 0 ? (
           <ul className="mt-5 flex flex-col gap-5">
             {files.documents.map((file: Models.Document) => (
+              <div key={file.$id} className="flex justify-between gap-3">
               <Link
                 href={file.url}
                 target="_blank"
                 className="flex items-center gap-3"
-                data-tap-safe
-                key={file.$id}
               >
                 <Thumbnail
                   type={file.type}
@@ -79,17 +77,17 @@ const Dashboard = async () => {
                   url={file.url}
                 />
 
-                <div className="recent-file-details">
-                  <div className="flex flex-col gap-1">
-                    <p className="recent-file-name">{file.name}</p>
+               
+                  <div className="line-clamp-1 flex w-fit flex-col gap-1">
+                    <p className="recent-file-name inline">{file.name}</p>
                     <FormattedDateTime
                       date={file.$createdAt}
-                      className="caption"
+                      className="caption !inline"
                     />
-                  </div>
-                  <ActionDropdown file={file} />
                 </div>
               </Link>
+             <ActionDropdown file={file} />
+              </div>
             ))}
           </ul>
         ) : (

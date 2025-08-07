@@ -227,11 +227,8 @@
   .dashboard-recent-files {
     @apply h-full rounded-[20px] bg-white p-5 xl:p-8 !important;
   }
-  .recent-file-details {
-    @apply flex w-full justify-between gap-3 !important;
-  }
   .recent-file-name {
-    @apply subtitle-2 line-clamp-1 w-full text-light-100 sm:max-w-[200px] lg:max-w-[250px] max-xs:max-w-[150px]  !important;
+    @apply subtitle-2 line-clamp-1 text-light-100 md:max-w-[100px] lg:max-w-[150px] xl:max-w-[250px] max-xs:max-w-[150px]  !important;
   }
   .recent-file-date {
     @apply body-2 text-light-100/80 !important;
