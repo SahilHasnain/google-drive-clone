@@ -151,12 +151,14 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
     <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
       <DropdownMenu open={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
         <DropdownMenuTrigger className="shad-no-focus shrink-0">
+          <button>
           <Image
             src="/assets/icons/dots.svg"
             alt="dots"
             width={34}
             height={34}
           />
+          </button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuLabel className="max-w-[200px] truncate">
