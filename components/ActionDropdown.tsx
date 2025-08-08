@@ -150,10 +150,16 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
   return (
     <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
       <DropdownMenu open={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
-        <DropdownMenuTrigger className="shad-no-focus shrink-0">
-         <Button className="px-2.5 py-1.5 bg-brand rounded ">
-          open
-          </Button>
+        <DropdownMenuTrigger
+          className="shad-no-focus shrink-0"
+          style={{ touchAction: "pan-y" }}
+        >
+          <Image
+            src="/assets/icons/dots.svg"
+            alt="dots"
+            width={34}
+            height={34}
+          />
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuLabel className="max-w-[200px] truncate">
@@ -170,7 +176,7 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
 
                 if (
                   ["rename", "share", "delete", "details"].includes(
-                    actionItem.value,
+                    actionItem.value
                   )
                 ) {
                   setIsModalOpen(true);
