@@ -150,16 +150,23 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
   return (
     <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
       <DropdownMenu open={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
-        <DropdownMenuTrigger
-          className="shad-no-focus shrink-0"
-          style={{ touchAction: "pan-y" }}
-        >
-          <Image
-            src="/assets/icons/dots.svg"
-            alt="dots"
-            width={34}
-            height={34}
-          />
+        <DropdownMenuTrigger asChild>
+          <button
+            className="shad-no-focus shrink-0"
+            onPointerDown={(e) => {
+              if (e.pointerType === "touch") {
+                e.preventDefault();
+              }
+            }}
+            onClick={() => setIsDropdownOpen((prev) => !prev)}
+          >
+            <Image
+              src="/assets/icons/dots.svg"
+              alt="dots"
+              width={34}
+              height={34}
+            />
+          </button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuLabel className="max-w-[200px] truncate">
