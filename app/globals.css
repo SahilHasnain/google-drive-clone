@@ -363,7 +363,13 @@
   }
 
   .error-toast {
-    @apply bg-red !rounded-[10px] !important;
+    @apply bg-red !rounded-[10px]
+           max-sm:fixed
+           max-sm:bottom-5
+           max-sm:left-1/2
+           max-sm:-translate-x-1/2
+           max-sm:w-full
+           !important;
   }
 
   /* Header */
@@ -466,5 +472,17 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* Prevent tap highlight on touch devices */
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Disable focus outlines on touch-only devices */
+  @media (hover: none) {
+    *:focus {
+      outline: none !important;
+    }
   }
 }
