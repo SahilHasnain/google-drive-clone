@@ -23,7 +23,7 @@ export default function RootLayout({
       <body className={`${poppins.variable} font-poppins antialiased`}>
         {children}
         <div className="pointer-events-none fixed bottom-4 right-4 z-50 rounded-md bg-brand px-3 py-1 text-sm font-medium text-white shadow-lg transition-all hover:bg-brand/90">
-          Developed by Ubaid Raza
+          Developed by Sahil Hasnain
         </div>
       </body>
     </html>
